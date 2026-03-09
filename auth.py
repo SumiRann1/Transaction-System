@@ -19,6 +19,8 @@ if "changes" not in st.session_state:
     st.session_state.changes = 0
 
 def login_page():
+
+    st.write(conn.engine.url)
     _, col, _ = st.columns([1, 8, 1])
     
     with col:
