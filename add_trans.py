@@ -62,10 +62,10 @@ def add_transaction_page():
             food_item = st.selectbox("Enter food item", list(AMUL.keys()))
             amount = AMUL[food_item]
             if amount == 0:
-                amount = st.number_input("Enter amount", min_value=9, max_value=1000, value=9, step=5)   
+                amount = st.number_input("Enter amount", min_value=1, max_value=1000, value=9, step=5)   
 
         elif transaction in ["BlinkIT", "Auto/Rentals", "Outside", "Others"]:
-            amount = st.number_input("Enter amount", min_value=-1000, max_value=1000, value=1, step=5)
+            amount = st.number_input("Enter amount", min_value=1, max_value=1000, value=1, step=5)
             description = st.text_input("Enter description / note", value="", placeholder="e.g. Movie tickets")
 
         if transaction and transactee:
