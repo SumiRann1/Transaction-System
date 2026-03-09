@@ -2,14 +2,17 @@ import streamlit as st
 from sqlalchemy import MetaData, Table, Column, Integer, String, Float, DateTime, text
 from datetime import datetime
 
+# def get_connection():
+#     try:
+#         if "mydb" in st.secrets.get("connections", {}):
+#             return st.connection("mydb", type="sql")
+#         else:
+#             return st.connection("local_db", type="sql", url="sqlite:///transactions.db")
+#     except (FileNotFoundError, Exception):
+#         return st.connection("local_db", type="sql", url="sqlite:///transactions.db") 
+
 def get_connection():
-    try:
-        if "mydb" in st.secrets.get("connections", {}):
-            return st.connection("mydb", type="sql")
-        else:
-            return st.connection("local_db", type="sql", url="sqlite:///transactions.db")
-    except (FileNotFoundError, Exception):
-        return st.connection("local_db", type="sql", url="sqlite:///transactions.db") 
+    return st.connection("mydb", type="sql")
 
 conn = get_connection()
 
