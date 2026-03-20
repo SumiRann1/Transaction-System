@@ -125,6 +125,7 @@ def friends_page():
         df_trans = conn.query(trans_query, ttl=0)
         
         friends_data = []
+        total = 0
         for f in existing_friend:
             lended = 0.0
             borrowed = 0.0
@@ -132,6 +133,7 @@ def friends_page():
                 lended = df_trans[(df_trans['lender'] == st.session_state.current_user) & (df_trans['borrower'] == f)]['amount'].sum()
                 borrowed = df_trans[(df_trans['borrower'] == st.session_state.current_user) & (df_trans['lender'] == f)]['amount'].sum()
             net = lended - borrowed
+            total += net
             friends_data.append({
                 "Friend": f,
                 "Lended (₹)": lended,
@@ -151,4 +153,10 @@ def friends_page():
                 "Net Balance (₹)": st.column_config.NumberColumn("Net Balance ⚖️", format="₹ %.2f")
             }
         )
+
+    if total < 0:
+        st.subheader(":red["Total Debt Amount:"]")
+    else:
+        st.subheader(":green["Total Incoming Amount:"]")
+    st.metric(value=total)
     
