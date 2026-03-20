@@ -73,7 +73,7 @@ def add_transaction_page():
                 st.session_state.changes = amount
                 with conn.session as s:
                     query = '''INSERT INTO transactions (date_time, lender, borrower, shop_category, item, amount, description, status) 
-                               VALUES (CURRENT_TIMESTAMP, '{lender}', '{borrower}', '{shop}', '{item}', {amount}, '{description}', 'active')'''
+                               VALUES (datetime.now(), '{lender}', '{borrower}', '{shop}', '{item}', {amount}, '{description}', 'active')'''
                     s.execute(text(query.format(
                         lender=st.session_state.current_user, 
                         borrower=transactee, 
