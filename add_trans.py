@@ -85,8 +85,8 @@ def add_transaction_page():
                     s.commit()
                 st.success(f"Transaction recorded successfully! 🎉")
 
-                with st.expander("📄 Latest Transaction Details", expanded=True):
-                    st.markdown(f"""
+               
+                st.markdown(f"""
                     <div style="padding:15px; border-radius:10px; border:1px solid #ddd;">
                         <h4>👤 {transactee}</h4>
                         <p><b>Shop:</b> {transaction}</p>
