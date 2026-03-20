@@ -84,20 +84,31 @@ def add_transaction_page():
                     )))
                     s.commit()
                 st.success(f"Transaction recorded successfully! 🎉")
-                
+
                 with st.expander("📄 Latest Transaction Details", expanded=True):
-                    st.markdown("### 👤 Transaction Summary")
-                    col1, col2 = st.columns([1, 1])
-                    with col1:
-                        st.markdown(f"**Transactee:** {transactee}")
-                        st.markdown(f"**Shop:** {transaction}")
-                        if food_item:
-                            st.markdown(f"**Item:** {food_item}")
-                    with col2:
-                        st.markdown(f"**💰 Amount:** <span style='color:green; font-size:18px;'>₹ {amount}</span>", unsafe_allow_html=True)
-                        if description:
-                            st.markdown(f"**📝 Note:** {description}")                
-                    st.divider()
+                    st.markdown(f"""
+                    <div style="padding:15px; border-radius:10px; border:1px solid #ddd;">
+                        <h4>👤 {transactee}</h4>
+                        <p><b>Shop:</b> {transaction}</p>
+                        {"<p><b>Item:</b> " + food_item + "</p>" if food_item else ""}
+                        <p><b>Amount:</b> <span style="color:green; font-size:18px;">₹ {amount}</span></p>
+                        {"<p><b>Note:</b> " + description + "</p>" if description else ""}
+                    </div>
+                    """, unsafe_allow_html=True)
+                
+                # with st.expander("📄 Latest Transaction Details", expanded=True):
+                #     st.markdown("### 👤 Transaction Summary")
+                #     col1, col2 = st.columns([1, 1])
+                #     with col1:
+                #         st.markdown(f"**Transactee:** {transactee}")
+                #         st.markdown(f"**Shop:** {transaction}")
+                #     with col2:
+                #         if food_item:
+                #             st.markdown(f"**Item:** {food_item}")
+                #         st.markdown(f"**💰 Amount:** <span style='color:green; font-size:18px;'>₹ {amount}</span>", unsafe_allow_html=True)
+                #         if description:
+                #             st.markdown(f"**📝 Note:** {description}")                
+                #     st.divider()
 
     if transactee:
         st.markdown(f"### 📊 History with {transactee}")
