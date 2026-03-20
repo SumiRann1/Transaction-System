@@ -88,6 +88,7 @@ def add_transaction_page():
                
                 st.markdown(f"""
                     <div style="padding:15px; border-radius:10px; border:1px solid #ddd;">
+                        <h3>📄 Latest Transaction Details</h3>
                         <h4>👤 {transactee}</h4>
                         <p><b>Shop:</b> {transaction}</p>
                         {"<p><b>Item:</b> " + food_item + "</p>" if food_item else ""}
