@@ -153,10 +153,20 @@ def friends_page():
                 "Net Balance (₹)": st.column_config.NumberColumn("Net Balance ⚖️", format="₹ %.2f")
             }
         )
-
+        
     if total < 0:
-        st.metric(label = ":red[Total Debt Amount :]", value=total)
+        mark = "red"
     else:
-        st.metric(label = ":green[Total Incoming Amount :]", value=total)
-    
-    
+        mark = "green"
+    st.divider()
+    with st.container():
+        st.markdown("""
+            <div style="
+                background-color:#ffe6e6;
+                padding:20px;
+                border-radius:12px;
+                border-left:6px solid {};">
+                <h4 style="color:red; margin-bottom:5px;">Total Debt Amount</h4>
+                <h2 style="margin:0;">₹ {}</h2>
+            </div>
+        """.format(mark, total), unsafe_allow_html=True)
