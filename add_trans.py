@@ -85,19 +85,19 @@ def add_transaction_page():
                     s.commit()
                 st.success(f"Transaction recorded successfully! 🎉")
                 
-                with st.expander("Show Latest Transaction Details", expanded=True):
-                    colA, colB = st.columns(2)
-                    with colA:
-                        st.write(f"**Transactee:** {transactee}")
-                        st.write(f"**Shop:** {transaction}")
-                    with colB:
+                with st.expander("📄 Latest Transaction Details", expanded=True):
+                    st.markdown("### 👤 Transaction Summary")
+                    col1, col2 = st.columns([1, 1])
+                    with col1:
+                        st.markdown(f"**Transactee:** {transactee}")
+                        st.markdown(f"**Shop:** {transaction}")
                         if food_item:
-                            st.write(f"**Item:** {food_item}")
-                        st.write(f"**Amount:** ₹ {amount}")
+                            st.markdown(f"**Item:** {food_item}")
+                    with col2:
+                        st.markdown(f"**💰 Amount:** <span style='color:green; font-size:18px;'>₹ {amount}</span>", unsafe_allow_html=True)
                         if description:
-                            st.write(f"**Note:** {description}")
-                    
-    st.divider()
+                            st.markdown(f"**📝 Note:** {description}")                
+                    st.divider()
 
     if transactee:
         st.markdown(f"### 📊 History with {transactee}")
