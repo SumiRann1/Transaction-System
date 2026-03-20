@@ -155,8 +155,8 @@ def friends_page():
         )
 
     if total < 0:
-        st.subheader(:red[Total Debt Amount :])
+        st.subheader(":red[Total Debt Amount :]")
     else:
-        st.subheader(:green[Total Incoming Amount :])
+        st.subheader(":green[Total Incoming Amount :]")
     st.metric(value=total)
     
