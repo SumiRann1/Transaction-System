@@ -153,22 +153,27 @@ def friends_page():
                 "Net Balance (₹)": st.column_config.NumberColumn("Net Balance ⚖️", format="₹ %.2f")
             }
         )
-        
-    if total < 0:
-        mark = "red"
-        word = "Debt"
-    else:
-        mark = "green"
-        word ="Incoming"
     st.divider()
     with st.container():
-        st.markdown("""
-            <div style="
-                background-color:#ffe6e6;
-                padding:20px;
-                border-radius:12px;
-                border-left:6px solid {};">
-                <h4 style="color:{}; margin-bottom:5px;">Total {} Amount</h4>
-                <h2 style="margin:0;">₹ {}</h2>
-            </div>
-        """.format(mark, mark, word, total), unsafe_allow_html=True)
+        if total < 0:
+            st.markdown("""
+                <div style="
+                    background-color:#ffe6e6;
+                    padding:20px;
+                    border-radius:12px;
+                    border-left:6px solid red;">
+                    <h4 style="color:red; margin-bottom:5px;">Total Debt Amount</h4>
+                    <h2 style="margin:0;">₹ {}</h2>
+                </div>
+            """.format(total), unsafe_allow_html=True)
+        else:
+            st.markdown("""
+                <div style="
+                    background-color:#e6ffe6;
+                    padding:20px;
+                    border-radius:12px;
+                    border-left:6px solid green;">
+                    <h4 style="color:green; margin-bottom:5px;">Total Incoming Amount</h4>
+                    <h2 style="margin:0;">₹ {}</h2>
+                </div>
+            """.format(total), unsafe_allow_html=True)
