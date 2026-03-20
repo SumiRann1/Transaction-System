@@ -2,6 +2,7 @@ from auth import logout
 from database import conn
 from sqlalchemy import text
 import streamlit as st
+from datetime import datetime
 
 def delete_trans_page():
     col1, col2 = st.columns([3, 1])
@@ -119,7 +120,7 @@ def delete_trans_page():
                 st.markdown("#### 🗑️ Request to Delete a Transaction")
                 st.caption("Select transactions below to send deletion requests to the other user.")
                 for index, row in active_trans.iterrows():
-                    trans_check = st.checkbox(f"Request Deletion for {row['date_time']} (₹{row['amount']})", key=f"req_delete_{index}")
+                    trans_check = st.checkbox(f"Request Deletion for {row['date_time'].strftime("%Y-%m-%d %H:%M")} (₹{row['amount']})", key=f"req_delete_{index}")
                     
                     if trans_check:
                         if row['lender'] == st.session_state.current_user:
