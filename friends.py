@@ -162,8 +162,8 @@ def friends_page():
                     padding:20px;
                     border-radius:12px;
                     border-left:6px solid red;">
-                    <h4 style="color:red; margin-bottom:5px;">Total Debt Amount</h4>
-                    <h2 style="margin:0;color:red;">₹ {}</h2>
+                    <h3 style="color:red; margin-bottom:5px;">Total Debt Amount</h3>
+                    <h3 style="margin:0;color:red;">₹ {}</h3>
                 </div>
             """.format(total), unsafe_allow_html=True)
         else:
@@ -173,7 +173,7 @@ def friends_page():
                     padding:20px;
                     border-radius:12px;
                     border-left:6px solid green;">
-                    <h4 style="color:green; margin-bottom:5px;">Total Incoming Amount</h4>
-                    <h2 style="margin:0;color:green;">₹ {}</h2>
+                    <h3 style="color:green; margin-bottom:5px;">Total Incoming Amount</h3>
+                    <h3 style="margin:0;color:green;">₹ {}</h3>
                 </div>
             """.format(total), unsafe_allow_html=True)
